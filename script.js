@@ -63,4 +63,16 @@ document.addEventListener("DOMContentLoaded", () => {
         .catch(error => console.error("JSONの読み込みに失敗しました:", error));
 });
 
+document.addEventListener("DOMContentLoaded", function () {
+  const loadingScreen = document.querySelector(".loading-screen");
 
+  // 最低 1 秒は表示
+  setTimeout(() => {
+    loadingScreen.style.opacity = "0"; // フェードアウト
+    setTimeout(() => {
+      loadingScreen.style.display = "none"; // 完全に非表示
+    }, 750); // フェードアウトアニメーションの時間
+  }, 1500); // 最低 1 秒表示
+});
+
+  
