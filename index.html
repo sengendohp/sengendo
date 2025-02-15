@@ -8,6 +8,7 @@
   <style>
 
 
+
 /* モーダルの基本スタイル（非表示） */
 .modal {
     display: none;
@@ -20,38 +21,35 @@
     background-color: rgba(0, 0, 0, 0.6);
     opacity: 0;
     transition: opacity 0.2s ease-in-out; /* フェードインアニメーション */
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 /* モーダルが表示されたとき */
 .modal.show {
-    display: flex;
+    display: block;
     opacity: 1;
 }
 
 /* モーダルコンテンツ */
 .modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     background: #fff;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
-    width: 90%; /* モーダルを画面幅に合わせて調整 */
-    max-width: 500px; /* PCでは大きくなりすぎないよう制限 */
-    max-height: 90vh; /* 画面の高さに対して縮小 */
+    width: 100%; /* 幅を調整 */
+    max-width: 500px; /* PCで大きくなりすぎないように */
+    max-height: 90%;
     text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 }
 
 /* 画像スタイル */
 .modal-content img {
-    max-width: 100%;
+    max-width: 900%;
     max-height: 80vh;
     border-radius: 5px;
-    object-fit: contain;
 }
 
 /* 閉じるボタン */
@@ -68,16 +66,12 @@
 /* スマホ対応 */
 @media (max-width: 600px) {
     .modal-content {
-        width: 95%; /* スマホではさらに広く */
-        max-width: none; /* 幅の制限を解除 */
-        padding: 15px; /* 余白調整 */
-    }
-
-    .modal-content img {
-        max-width: 100%;
-        max-height: 70vh; /* 画面の高さに合わせて縮小 */
+        width: 95%; /* スマホではより広く */
+        max-width: none; /* 最大幅制限を解除 */
+        padding: 15px; /* 余白を調整 */
     }
 }
+
 
 	
 </style>
