@@ -95,12 +95,12 @@ body {
 
 
 h2 {
-  font-size: 25px;
+  font-size: 30px;
   color: rgb(255, 255, 255); /* 見出しのフォントカラー */
   text-align: center;
-  margin-bottom: px;
+  margin-bottom: 0px;
   position: relative;
-  padding-bottom: 20px; /* 下線との間隔調整 */
+  padding-bottom: 35px; /* 下線との間隔調整 */
   display: flex;
   justify-content: center; /* テキストを中央揃え */
 }
@@ -109,7 +109,7 @@ h2::after {
   content: "";
   position: absolute;
   bottom: 0;
-  width: 65%; /* 下線の長さ */
+  width: 75%; /* 下線の長さ */
   height: 0.5px; /* 下線の太さ */
   background-color: rgb(255, 255, 255); /* 下線の色 */
   left: 50%;
@@ -117,13 +117,35 @@ h2::after {
 }
 
 
+h3 {
+  font-size: 0px;
+  color: rgb(255, 255, 255); /* 見出しのフォントカラー */
+  text-align: center;
+  margin-bottom: 20px;
+  position: relative;
+  padding-bottom: 20px; /* 下線との間隔調整 */
+  display: flex;
+  justify-content: center; /* テキストを中央揃え */
+}
+
+h3::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  width: 75%; /* 下線の長さ */
+  height: 0.5px; /* 下線の太さ */
+  background-color: rgb(255, 255, 255); /* 下線の色 */
+  left: 50%;
+  transform: translateX(-50%); /* 中央配置 */
+}
+
 
 .news-container {
   width: 100%; /* 横幅を80%にする（調整可能） */
-  max-width: 450px; /* 最大幅を600pxに制限 */
+  max-width: 550px; /* 最大幅を600pxに制限 */
   max-height: 150px; /* 高さ固定 */
   overflow-y: auto; /* スクロール可能 */
-  padding: 0px;
+  padding: 30px;
   border-radius: 0px;
   margin: auto; /* 中央揃え */
   
@@ -159,10 +181,10 @@ h2::after {
 #news-list li {
   display: grid;
   grid-template-columns: 85px 1fr; /* `date`を固定幅, `title`を自動調整 */
-  gap: 10px; /* `date`と`title`の間の余白 */
+  gap: 50px; /* `date`と`title`の間の余白 */
   padding: 8px 0;
   border-bottom: 1px solid #ddd;
-  font-size: 12px;
+  font-size: 17px;
   white-space: normal; /* 折り返し許可 */
   word-wrap: break-word;
   overflow-wrap: break-word;
