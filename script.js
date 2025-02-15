@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const newsList = document.getElementById("news-list");
   const jsonURL = "./news/news.json";  // VSCode用 (GitHub PagesならフルURLでもOK)
 
-  fetch(jsonURL)
+fetch("/namenamename/news/news.json") // ← GitHub Pagesのルートからの絶対パスに変更
     .then(response => {
       if (!response.ok) throw new Error("HTTPエラー: " + response.status);
       return response.json();
