@@ -439,6 +439,22 @@ img {
   top: 0;
 }
 
+.map-container {
+  width: 100%;
+  max-width: 600px; /* 必要に応じて調整 */
+  margin: 0 auto 20px; /* 下に余白を追加 */
+  padding: 10px; /* 余白をつけてボーダーと分離 */
+  border: 1px solid rgba(0, 0, 0, 0.2); /* 薄いボーダー */
+  border-radius: 5px; /* 角を少し丸める（不要なら削除） */
+  background: #fff; /* 背景を白にして視認性を向上（不要なら削除） */
+}
+
+.map-container iframe {
+  width: 100%;
+  height: 400px; /* 高さを調整 */
+  border: none;
+}
+
 
 footer {
     background-color: #727272;  /* 背景色を濃い灰色に変更 */
