@@ -1,0 +1,170 @@
+body {
+  margin: 0;
+  font-family: "Noto Sans JP", sans-serif;
+  color: #000;
+  background: url('img/background.jpg') no-repeat center center fixed;
+  background-size: cover;
+  padding-top: 0px; /* 上部の余白を追加 */
+}
+
+.container {
+  line-height: 0;
+}
+
+/* ロゴコンテナ */
+.logo {
+  font-size: 2.5rem;
+  color: #9c27b0; /* 「千元堂」の文字色を紫 */
+  text-align: center;
+  margin: 20px 0;
+}
+
+/* ナビゲーション */
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center; /* ナビゲーションを中央寄せ */
+  gap: 20px; /* メニュー間のスペース */
+}
+
+nav a {
+  color: #000; /* リンクの色 */
+  text-decoration: none;
+  padding: 5px 10px;
+  border: 1px solid #000;
+  border-radius: 0; /* 角の丸みを取る */
+  transition: background 0.3s;
+}
+
+nav a:hover {
+  background: #7b1fa2;
+}
+
+#zero-section {
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000; /* 他の要素の上に表示させる */
+  background-color: #fff; /* 背景色（透明じゃない） */
+  padding: 0px 0; /* 上下の余白 */
+  width: 100%; /* 横幅を100%に */
+  box-sizing: border-box; /* 余白やパディングが横幅に影響しないように */
+  display: flex;
+  justify-content: center; /* アイテムを中央寄せに */
+}
+
+
+/* first-sectionのスタイル */
+#first-section {
+  background: rgba(255, 255, 255, 1.0); /* 透明度20%の白 */
+  scroll-margin-top: 80px; /* 固定ヘッダーの高さ分を確保 */
+}
+
+#second-section {
+  background: rgba(255, 255, 255, 1.0); /* 透明度20%の白 */
+  scroll-margin-top: 80px; /* 固定ヘッダーの高さ分を確保 */
+}
+
+#third-section {
+  background: rgba(255, 255, 255, 1.0); /* 透明度20%の白 */
+  scroll-margin-top: 80px; /* 固定ヘッダーの高さ分を確保 */
+}
+
+#fourth-section {
+  background: rgba(255, 255, 255, 1.0); /* 透明度20%の白 */
+  scroll-margin-top: 80px; /* 固定ヘッダーの高さ分を確保 */
+}
+
+#fifth-section {
+  background: rgba(255, 255, 255, 1.0); /* 透明度20%の白 */
+  scroll-margin-top: 80px; /* 固定ヘッダーの高さ分を確保 */
+}
+
+#sixth-section {
+  background: rgba(255, 255, 255, 1.0); /* 透明度20%の白 */
+  scroll-margin-top: 80px; /* 固定ヘッダーの高さ分を確保 */
+}
+
+
+
+/* メインコンテンツのスタイル */
+.main-content {
+
+  background: rgba(255, 255, 255, 1.0); /* 透明度20%の白 */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* コンテナーの影を追加 */
+  margin-top: 60px; /* ヘッダーにくっつけるための余白 */
+  border-radius: 0; /* 角の丸みを取る */
+  width: 100%;
+  max-width: 768px; /* コンテナと同じ最大幅 */
+  margin: 0 auto; /* 水平方向の中央寄せ */
+  text-align: center; /* コンテンツを中央寄せ */
+  display: flex; /* フレックスボックスで配置 */
+  justify-content: space-around; /* 左右のスペースを均等に分配 */
+  align-items: center; /* アイテムを縦方向にセンタリング */
+}
+
+.main-content li {
+  display: inline-block; /* 横に並べるための設定 */
+  color: #000; /* テキストの色を黒 */
+}
+
+.main-content a {
+  background: #d3d3d3;
+  color: #000; /* リンクの色を黒 */
+  text-decoration: none;
+  border-radius: 0; /* 角の丸みを取る */
+  transition: background 0.3s;
+}
+
+.main-content a:hover {
+  background: #7b1fa2;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.6); /* ホバー時のぼかし効果 */
+}
+
+.button img {
+    filter: grayscale(0%); /* 初期状態はカラー */
+
+}
+
+.button:hover img {
+    filter: grayscale(100%); /* ホバー時に白黒 */
+}
+
+.container {
+    max-width: 768px; /* コンテナの最大幅 */
+    margin: 0 auto;   /* 中央寄せ */
+}
+
+img {
+    max-width: 100%; /* 親要素の幅に合わせる */
+    height: auto;    /* 縦横比を保つ */
+}
+
+
+footer {
+    background-color: #727272;  /* 背景色を濃い灰色に変更 */
+    text-align: center;  /* 文字を中央寄せ */
+    padding: 0px 0;  /* 上下のパディングを設定 */
+    font-size: 0.9em;  /* フォントサイズを調整 */
+    width: 100%;  /* 幅を100%に設定 */
+    max-width: 768px;  /* 最大幅768pxに制限 */
+    margin: 0 auto;  /* 中央寄せ */
+    color: white;  /* 文字色を白に設定 */
+}
+
+footer .footer-inner {
+    padding: 10px;
+}
+
+footer a {
+    color: #ffffff;  /* リンクの文字色を白に設定 */
+    text-decoration: none;  /* 下線を消す */
+}
+
+footer p {
+    margin: 5px 0;  /* 段落間のマージンを調整 */
+}
+
