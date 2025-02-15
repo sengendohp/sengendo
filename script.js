@@ -36,25 +36,24 @@ function smoothScrollTo(start, end, duration) {
 
     requestAnimationFrame(scrollStep);
 }
-document.addEventListener("DOMContentLoaded", () => {
-  const newsList = document.getElementById("news-list");
-  const jsonURL = "./news/news.json";  // VSCode用 (GitHub PagesならフルURLでもOK)
+console.log("news.json の読み込み開始"); 
 
-fetch("/namenamename/news/news.json")
+fetch("./news/news.json") // ここを適宜変更
     .then(response => {
-      if (!response.ok) throw new Error("HTTPエラー: " + response.status);
-      return response.json();
+        console.log("レスポンス取得:", response);
+        if (!response.ok) {
+            throw new Error(`HTTPエラー! ステータス: ${response.status}`);
+        }
+        return response.json();
     })
     .then(data => {
-      newsList.innerHTML = "";  // 読み込み中を消す
-      data.forEach(news => {
-        const listItem = document.createElement("li");
-        listItem.innerHTML = `<strong>${news.date}</strong> - ${news.title}`;
-        newsList.appendChild(listItem);
-      });
+        console.log("取得したJSONデータ:", data); // データ確認
+        const newsList = document.getElementById("news-list");
+        newsList.innerHTML = ""; // 既存の「読み込み中」を消す
+        data.forEach(item => {
+            const li = document.createElement("li");
+            li.textContent = `${item.date} ${item.title}`;
+            newsList.appendChild(li);
+        });
     })
-    .catch(error => {
-      console.error("JSONの読み込みに失敗:", error);
-      newsList.innerHTML = "<li>お知らせを取得できませんでした。</li>";
-    });
-});
+    .catch(error => console.error("JSONの読み込みに失敗しました:", error));
