@@ -36,24 +36,31 @@ function smoothScrollTo(start, end, duration) {
 
     requestAnimationFrame(scrollStep);
 }
-console.log("news.json の読み込み開始"); 
 
-fetch("./news/news.json") // ここを適宜変更
-    .then(response => {
-        console.log("レスポンス取得:", response);
-        if (!response.ok) {
-            throw new Error(`HTTPエラー! ステータス: ${response.status}`);
-        }
-        return response.json();
-    })
-    .then(data => {
-        console.log("取得したJSONデータ:", data); // データ確認
-        const newsList = document.getElementById("news-list");
-        newsList.innerHTML = ""; // 既存の「読み込み中」を消す
-        data.forEach(item => {
-            const li = document.createElement("li");
-            li.textContent = `${item.date} ${item.title}`;
-            newsList.appendChild(li);
-        });
-    })
-    .catch(error => console.error("JSONの読み込みに失敗しました:", error));
+document.addEventListener("DOMContentLoaded", () => {
+    const newsList = document.getElementById("news-list");
+
+    fetch("news/news.json")
+        .then(response => response.json())
+        .then(data => {
+            data.forEach(item => {
+                const li = document.createElement("li");
+                li.classList.add("news-item");
+
+                const dateSpan = document.createElement("span");
+                dateSpan.classList.add("news-date");
+                dateSpan.textContent = item.date;
+
+                const titleSpan = document.createElement("span");
+                titleSpan.classList.add("news-title");
+                titleSpan.textContent = item.title;
+
+                li.appendChild(dateSpan);
+                li.appendChild(titleSpan);
+                newsList.appendChild(li);
+            });
+        })
+        .catch(error => console.error("JSONの読み込みに失敗しました:", error));
+});
+
+

@@ -2,10 +2,12 @@ body {
   margin: 0;
   font-family: "Noto Sans JP", sans-serif;
   color: #000;
-  background: url('img/background.jpg') no-repeat center center fixed;
+  background-color: #1a001a !important; /* 黒に近い紫 */
+  /* background: url('img/background.jpg') no-repeat center center fixed;*/
   background-size: cover;
   padding-top: 0px; /* 上部の余白を追加 */
 }
+
 
 .container {
   line-height: 0;
@@ -46,32 +48,87 @@ body {
   font-family: Arial, sans-serif;
   background-color: #f4f4f4;
   margin: 0;
-  padding: 20px;
+  padding: 0px;
 }
 
 .news-section {
-  max-width: 600px;
-  margin: 0 auto;
-  background: white;
+  position: relative; /* 背景レイヤーを追加するために必要 */
   padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  color: rgb(255, 255, 255); /* 全体のフォントカラーを白に */
+  font-family: "游明朝", "Yu Mincho", serif;
 }
+
+.news-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("img/news-background.jpg"); /* 背景画像 */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: -1;
+  opacity: 0.6; /* 透明度調整 */
+
+  /* === 追加部分 === */
+  filter: brightness(100%) blur(3.7px); /* 画像を暗く & ぼかす */
+}
+
+.news-section::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  
+  /* === 白ビネット効果（縦横比調整） === */
+  background: radial-gradient(ellipse 90% 80% at center, 
+              rgba(255, 255, 255, 0) 50%, 
+              rgba(255, 255, 255, 1) 100%);
+}
+
+
+
 
 h2 {
-  font-size: 24px;
-  color: #333;
+  font-size: 25px;
+  color: rgb(255, 255, 255); /* 見出しのフォントカラー */
   text-align: center;
-  margin-bottom: 15px;
+  margin-bottom: px;
+  position: relative;
+  padding-bottom: 20px; /* 下線との間隔調整 */
+  display: flex;
+  justify-content: center; /* テキストを中央揃え */
 }
 
-.news-container {
-  max-height: 200px; /* 固定サイズ */
-  overflow-y: auto; /* スクロール可能 */
-  border: 1px solid #ddd;
-  padding: 10px;
-  background: #fff;
+h2::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  width: 65%; /* 下線の長さ */
+  height: 0.5px; /* 下線の太さ */
+  background-color: rgb(255, 255, 255); /* 下線の色 */
+  left: 50%;
+  transform: translateX(-50%); /* 中央配置 */
 }
+
+
+
+.news-container {
+  width: 100%; /* 横幅を80%にする（調整可能） */
+  max-width: 450px; /* 最大幅を600pxに制限 */
+  max-height: 150px; /* 高さ固定 */
+  overflow-y: auto; /* スクロール可能 */
+  padding: 0px;
+  border-radius: 0px;
+  margin: auto; /* 中央揃え */
+  
+}
+
 
 #news-list {
   list-style: none;
@@ -79,17 +136,49 @@ h2 {
   margin: 0;
 }
 
+.news-item {
+  display: grid;
+  grid-template-columns: 120px minmax(0, 1fr);
+  gap: 10px;
+  align-items: start; /* 上揃えにする */
+}
+
+
+.news-date {
+  
+  white-space: nowrap; /* 日付を折り返さない */
+}
+
+.news-title {
+  min-width: 0; /* ← これが無いと狭くなることがある */
+  flex-grow: 1;
+}
+
+
+
 #news-list li {
+  display: grid;
+  grid-template-columns: 85px 1fr; /* `date`を固定幅, `title`を自動調整 */
+  gap: 10px; /* `date`と`title`の間の余白 */
   padding: 8px 0;
   border-bottom: 1px solid #ddd;
-  font-size: 16px;
+  font-size: 12px;
+  white-space: normal; /* 折り返し許可 */
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  min-height: 40px; /* 行が詰まらないように最低限の高さを確保 */
+  line-height: 1.5; /* 行間を調整 */
 }
+
 
 #news-list li:last-child {
   border-bottom: none;
 }
 
 
+.news-section {
+  font-family: "游明朝", "Yu Mincho", serif;
+}
 
 #zero-section {
   position: sticky;
@@ -191,6 +280,56 @@ img {
     max-width: 100%; /* 親要素の幅に合わせる */
     height: auto;    /* 縦横比を保つ */
 }
+
+.floating-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 40px;
+  width: 60px;
+  height: 60px;
+  background-color: #C20082;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  border-radius: 50%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.floating-btn i {
+  font-size: 28px; /* 矢印の大きさ */
+}
+
+.floating-btn:hover {
+  background-color: #920363;
+  transform: scale(1.1);
+}
+.floating-img-btn {
+  position: fixed;
+  bottom: 0px; /* 位置調整 */
+  left: 20px;
+  width: 240px; /* 画像サイズの調整 */
+  height: auto;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  
+}
+
+.floating-img-btn img {
+  width: 100%; /* 画像のサイズをボタンの幅に合わせる */
+  height: auto;
+  object-fit: contain;
+}
+
+.floating-img-btn:hover {
+  transform: scale(1.1); /* ホバー時に少し拡大 */
+}
+
+
 
 
 footer {
