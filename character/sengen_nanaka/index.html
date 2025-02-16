@@ -1,6 +1,98 @@
-     </html>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>千元堂 - 除霊のためのスペシャルサイト</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+
+
+
+/* モーダルの基本スタイル（非表示） */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out; /* フェードインアニメーション */
+}
+
+/* モーダルが表示されたとき */
+.modal.show {
+    display: block;
+    opacity: 1;
+}
+
+/* モーダルコンテンツ */
+.modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    width: 100%; /* 幅を調整 */
+    max-width: 500px; /* PCで大きくなりすぎないように */
+    max-height: 90%;
+    text-align: center;
+}
+
+/* 画像スタイル */
+.modal-content img {
+    max-width: 90%;
+    max-height: 80vh;
+    border-radius: 5px;
+}
+
+/* 閉じるボタン */
+.close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #333;
+}
+
+/* スマホ対応 */
+@media (max-width: 500px) {
+    .modal-content {
+        width: 95%; /* スマホではより広く */
+        max-width: none; /* 最大幅制限を解除 */
+        padding: 15px; /* 余白を調整 */
+    }
+}
+
+
+	
+</style>
+  
+</head>
+
+<body>
         <h2>奈々圭ページ</h2>
         <p><a href="https://sengendo.jp/>トップ遷移</a></p>
                 <p><a href="https://sengendo.jp/character/">キャラページ遷移</a></p>
+		</section>
 
-                </html>
+</body>
+
+<footer>
+    <div class="footer-inner">
+        <p><a href="http://tutumiaya.com/" target="_blank">｜ホームページ｜</a></p>
+        <p>Copyright 2025 - Tsutsumi Aya All Rights Reserved.</p>
+        <p>無断転載・二次利用は禁止しております</p>
+    </div>
+</footer>
+
+
+</html>
