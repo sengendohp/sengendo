@@ -1,5 +1,6 @@
 console.log("JavaScriptが読み込まれました！");
 
+// スムーズスクロールの実装
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener("click", function (e) {
         e.preventDefault(); // デフォルトのジャンプ動作を止める
@@ -37,7 +38,9 @@ function smoothScrollTo(start, end, duration) {
     requestAnimationFrame(scrollStep);
 }
 
-document.addEventListener("DOMContentLoaded", () => {
+// ページ読み込み後の処理
+document.addEventListener("DOMContentLoaded", function () {
+    // ニュースリストの取得と表示
     const newsList = document.getElementById("news-list");
 
     fetch("news/news.json")
@@ -61,18 +64,89 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         })
         .catch(error => console.error("JSONの読み込みに失敗しました:", error));
-});
 
-document.addEventListener("DOMContentLoaded", function () {
-  const loadingScreen = document.querySelector(".loading-screen");
-
-  // 最低 1 秒は表示
-  setTimeout(() => {
-    loadingScreen.style.opacity = "0"; // フェードアウト
+    // ローディング画面の処理
+    const loadingScreen = document.querySelector(".loading-screen");
     setTimeout(() => {
-      loadingScreen.style.display = "none"; // 完全に非表示
-    }, 750); // フェードアウトアニメーションの時間
-  }, 1500); // 最低 1 秒表示
-});
+        loadingScreen.style.opacity = "0"; // フェードアウト
+        setTimeout(() => {
+            loadingScreen.style.display = "none"; // 完全に非表示
+        }, 750); // フェードアウトアニメーションの時間
+    }, 1500); // 最低 1 秒表示
 
-  
+    // モーダル関連の処理
+    const modal = document.getElementById("imageModal");
+    const modalImage = document.getElementById("modalImage");
+    const openBtn = document.getElementById("customImageButton");
+    const closeBtn = document.querySelector(".close");
+    const imageNumber = document.getElementById("imageNumber");
+    let images = [
+        "img/syoki/syoki1.png",
+        "img/syoki/syoki2.png"
+    ];
+    let currentIndex = 0;
+
+    // モーダルを表示（フェードイン）
+    openBtn.addEventListener("click", function(event) {
+        event.preventDefault();
+        modal.style.display = "flex"; // flexで中央寄せ
+        modal.style.opacity = "0";
+        setTimeout(() => {
+            modal.style.opacity = "1"; // フェードインのアニメーション
+        }, 10);
+        currentIndex = 0; // 最初の画像をセット
+        modalImage.src = images[currentIndex];
+        setInitialImageNumber();
+    });
+
+    // 画像を切り替える関数
+    function changeImage(step) {
+        currentIndex += step;
+        if (currentIndex < 0) {
+            currentIndex = images.length - 1; // 最後の画像へ
+        } else if (currentIndex >= images.length) {
+            currentIndex = 0; // 最初の画像へ
+        }
+        modalImage.src = images[currentIndex];
+        updateImageNumber();
+    }
+
+    // 画像番号を更新
+    function updateImageNumber() {
+        const dots = document.querySelectorAll('#imageNumber span');
+        dots.forEach(dot => dot.classList.remove('active'));
+        dots[currentIndex].classList.add('active');
+    }
+
+    // 画像番号のドットを初期化
+    function setInitialImageNumber() {
+        const imageNumberContainer = document.getElementById('imageNumber');
+        let dotsHTML = '';
+        for (let i = 0; i < images.length; i++) {
+            dotsHTML += '<span></span>';
+        }
+        imageNumberContainer.innerHTML = dotsHTML;
+        updateImageNumber();
+    }
+
+    // モーダルを閉じる（フェードアウト）
+    function closeModal() {
+        modal.style.opacity = "0";
+        setTimeout(() => {
+            modal.style.display = "none"; // 非表示
+        }, 300); // フェードアウトアニメーションの時間
+    }
+
+    // 閉じるボタン
+    closeBtn.addEventListener("click", closeModal);
+
+    // モーダル外をクリックしたら閉じる
+    window.addEventListener("click", function(event) {
+        if (event.target === modal) {
+            closeModal();
+        }
+    });
+
+    // 前へ・次へボタン
+    window.changeImage = changeImage;
+});

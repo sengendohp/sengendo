@@ -115,7 +115,7 @@
 	<section id="youtube" class="main-content" style="background-image: url('your-image-url.jpg'); background-size: cover; background-position: center; position: relative;">
 		<div class="youtube-container">
 			<iframe 
-				src="https://www.youtube.com/embed/obTz9WgVFhI?autoplay=0&controls=1&si=it9RajbVsF7Ghm6-" 
+			src="https://www.youtube.com/embed/0QT97xeP3fA?autoplay=0&controls=1" 
 				title="YouTube video player" frameborder="0"
 				allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 				referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
@@ -208,50 +208,28 @@
 		<img src="img/line.png" alt="ボタン画像">
 	</a>
 
-	<!-- モーダル -->
-	<div id="imageModal" class="modal">
-		<div class="modal-content">
-			<span class="close">&times;</span> <!-- 閉じるボタン -->
-			<img id="modalImage" src="img/custom-image.png" alt="表示する画像"> <!-- ここに画像を変更して表示 -->
-		</div>
-	</div>
-	
-	<script>
-		document.addEventListener("DOMContentLoaded", function() {
-			const modal = document.getElementById("imageModal");
-			const modalImage = document.getElementById("modalImage");
-			const openBtn = document.getElementById("customImageButton");
-			const closeBtn = document.querySelector(".close");
-	
-			// モーダルを表示（フェードイン）
-			openBtn.addEventListener("click", function(event) {
-				event.preventDefault();
-				modal.style.display = "block"; // まず表示
-				modal.style.opacity = "0"; // 直後に透明に設定
-				setTimeout(() => {
-					modal.style.opacity = "1"; // フェードイン
-				}, 10);
-			});
-	
-			// モーダルを閉じる（フェードアウト）
-			function closeModal() {
-				modal.style.opacity = "0"; // まず透明にする
-				setTimeout(() => {
-					modal.style.display = "none"; // 完全に消す
-				}, 100); // 0.1秒後に非表示
-			}
-	
-			// 閉じるボタンをクリックでモーダルを閉じる
-			closeBtn.addEventListener("click", closeModal);
-	
-			// モーダルの外側をクリックしたら閉じる
-			window.addEventListener("click", function(event) {
-				if (event.target === modal) {
-					closeModal();
-				}
-			});
-		});
-	</script>
+<!-- モーダル -->
+<div id="imageModal" class="modal">
+    <div class="modal-content">
+        <!-- 画像表示エリア -->
+        <div class="image-container">
+            <img id="modalImage" src="img/syoki/syoki1.png" alt="表示する画像">
+            <div id="imageNumber" class="image-number">● ●</div> <!-- 画像番号 -->
+            <!-- 前へボタン -->
+            <button class="prev" onclick="changeImage(-1)">&#10094;</button>
+
+            <!-- 次へボタン -->
+            <button class="next" onclick="changeImage(1)">&#10095;</button>
+        </div>
+
+        <!-- 閉じるボタン -->
+        <span class="close">&times;</span>
+    </div>
+</div>
+
+
+
+
   
 	  
 	  

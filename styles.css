@@ -480,3 +480,113 @@ footer p {
     margin: 5px 0;  /* 段落間のマージンを調整 */
 }
 
+/* モーダルのスタイル */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center; /* 中央寄せ */
+  align-items: center; /* 中央寄せ */
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 1000; /* モーダルが最前面に来るように */
+}
+
+/* モーダルの内容（画像とボタンを含む） */
+.modal-content {
+  position: relative;
+  background-color: white;
+  border-radius: 10px;
+  overflow: hidden;
+  padding: 20px;
+  display: flex;
+  flex-direction: column; /* 縦に配置 */
+  justify-content: center;
+  align-items: center;
+}
+
+/* 画像の表示 */
+.image-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 600px; /* 最大幅 */
+  padding-bottom: 40px; /* 画像の下に余白を追加 */
+}
+
+.image-container img {
+  max-width: 90%; /* 画像の最大幅 */
+  max-height: 80%; /* 画像の最大高さ */
+  object-fit: contain; /* 画像が縦横比を保ちながら収まるように */
+}
+
+/* 前へ・次へボタン */
+.prev, .next {
+  background-color: rgba(255, 255, 255, 0.7);
+  border: 1px solid #ccc;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 24px;
+  border-radius: 5px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  transition: background-color 0.3s;
+}
+
+.prev:hover, .next:hover {
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+/* 左右のボタンの位置 */
+.prev {
+  left: 10px; /* 左側に配置 */
+}
+
+.next {
+  right: 10px; /* 右側に配置 */
+}
+
+/* 画像番号 */
+.image-number {
+  position: absolute;
+  bottom: 10px; /* 画像の下部に配置 */
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0; /* ドットのサイズに影響を与えないように */
+  display: flex;
+  gap: 10px; /* ドット間のスペース */
+  z-index: 2; /* 画像の上に表示 */
+}
+
+/* 画像番号のドット */
+.image-number span {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin: 0 5px;
+  border-radius: 50%;
+  background-color: #D8B4E2; /* 薄い紫 */
+  transition: background-color 0.3s ease;
+}
+
+.image-number span.active {
+  background-color: #6A4C9C; /* 濃い紫 */
+}
+
+/* 閉じるボタン */
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 30px;
+  color: black;
+  cursor: pointer;
+}
