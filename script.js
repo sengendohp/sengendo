@@ -82,7 +82,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const imageNumber = document.getElementById("imageNumber");
     let images = [
         "img/syoki/syoki1.png",
-        "img/syoki/syoki2.png"
+        "img/syoki/syoki2.png",
+        "img/syoki/syoki3.png"
     ];
     let currentIndex = 0;
 
